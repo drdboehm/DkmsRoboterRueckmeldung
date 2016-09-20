@@ -1,0 +1,4 @@
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="http://localhost:7101/WebService-DkmsRoboterRueckmeldung-context-root/DkmsRoboterRueckmeldung?WSDL#%7Bhttp%3A%2F%2Fwww.css-lims.de%2FDkmsRoboterRueckmeldung%2F%7DDkmsRoboterRueckmeldung"
+          uri="../de/css_lims/dkmsroboterrueckmeldung/DkmsRoboterRueckmeldung.wsdl"/>
+</catalog>

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.css-lims.de/DkmsRoboterRueckmeldung/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DkmsRoboterRueckmeldung" targetNamespace="http://www.css-lims.de/DkmsRoboterRueckmeldung/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.css-lims.de/DkmsRoboterRueckmeldung/">
+      <xsd:element name="RueckmeldungRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="requestTyp" type="xsd:integer"/>
+            <xsd:element name="requestId" type="xsd:string"/>
+            <xsd:element name="hinweisText" nillable="true" type="xsd:string"/>
+            <xsd:element name="roboterId" type="xsd:string"/>
+            <xsd:element name="programmId" type="xsd:string"/>
+            <xsd:element name="userBedienerId" type="xsd:string"/>
+            <xsd:element name="userKontrolleurId" nillable="true" type="xsd:string"/>
+            <xsd:element name="zeitstempel" type="xsd:dateTime"/>
+            <xsd:element name="rackId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" name="dynamischerTeil">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="dynamischerTyp">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="name" type="xsd:string"/>
+                        <xsd:element maxOccurs="unbounded" name="dynamischesObjekt">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="position" type="xsd:integer"/>
+                              <xsd:element maxOccurs="unbounded" name="wertObjekt">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="name" type="xsd:string"/>
+                                    <xsd:element name="inhalt" type="xsd:string"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RueckmeldeungResponse">
+        <xsd:complexType>
+          <xsd:attribute name="requestId" type="xsd:string" use="required"/>
+          <xsd:attribute name="status" type="xsd:integer" use="required"/>
+          <xsd:attribute name="meldung" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RueckmeldungRequest">
+    <wsdl:part element="tns:RueckmeldungRequest" name="RueckmeldungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="RueckmeldeungResponse">
+    <wsdl:part element="tns:RueckmeldeungResponse" name="RueckmeldeungResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="DkmsRoboterRueckmeldung">
+    <wsdl:operation name="DkmsRoboterRueckmeldung">
+      <wsdl:input message="tns:RueckmeldungRequest"/>
+      <wsdl:output message="tns:RueckmeldeungResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DkmsRoboterRueckmeldungbinding" type="tns:DkmsRoboterRueckmeldung">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DkmsRoboterRueckmeldung">
+      <soap:operation soapAction="http://www.css-lims.de/DkmsRoboterRueckmeldung/DkmsRoboterRueckmeldung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DkmsRoboterRueckmeldung">
+    <wsdl:port name="DkmsRoboterRueckmeldung" binding="tns:DkmsRoboterRueckmeldungbinding">
+      <soap:address location="http://localhost:7101/WebService-DkmsRoboterRueckmeldung-context-root/DkmsRoboterRueckmeldungImplService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
