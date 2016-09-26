@@ -46,7 +46,7 @@ public class DkmsRoboterRueckmeldungClient {
 
         RueckmeldungResponse rueckmeldungResponse =
             dkmsRoboterRueckmeldung.dkmsRoboterRueckmeldung(rueckmeldungRequest);
-        System.err.println(rueckmeldungResponse.getStatus());
+        System.out.println(rueckmeldungResponse.getStatus());
 
     } // end main
 
