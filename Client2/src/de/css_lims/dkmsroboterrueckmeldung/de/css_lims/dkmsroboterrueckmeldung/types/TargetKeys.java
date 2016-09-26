@@ -2,5 +2,5 @@ package de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.
 
 
 public enum TargetKeys{
-    TYPE, NAME, ID, CHARGE, CONTAINER
+    type, name, rackId, container
 }
