@@ -2,6 +2,6 @@ package de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.
 
 
 public enum MaterialKeys {
-    type, name, materialId, container
+    type, name, charge, container
     
 }

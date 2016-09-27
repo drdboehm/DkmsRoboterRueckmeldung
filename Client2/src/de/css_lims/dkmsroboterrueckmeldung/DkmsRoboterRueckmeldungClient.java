@@ -38,11 +38,11 @@ public class DkmsRoboterRueckmeldungClient {
 
         rueckmeldungRequest = initializeStaticRequest(1, "Test5", "MSM2", "001", "boehm", "boehm", "MSM1 defekt");
 
-        createDynamischenTyp(DynamischeTypen.materials);
-        createDynamischenTyp(DynamischeTypen.targets);
-        createDynamischesObject(DynamischeTypen.materials, "1", "Destilled water", "L00005", "11111", "tube");
+        createDynamischenTypAndAdd2dTypList(DynamischeTypen.materials);
+        createDynamischenTypAndAdd2dTypList(DynamischeTypen.targets);
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "1", "Destilled water", "L00024", "L00005", "tube");
 
-        createDynamischesObject(DynamischeTypen.targets, "1", "type", "Test5", "Test5", "96Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "1", "type", "Test6", "Test6", "96Plate");
 
         RueckmeldungResponse rueckmeldungResponse =
             dkmsRoboterRueckmeldung.dkmsRoboterRueckmeldung(rueckmeldungRequest);
@@ -50,13 +50,13 @@ public class DkmsRoboterRueckmeldungClient {
 
     } // end main
 
-    private static void createDynamischenTyp(DynamischeTypen dt) {
+    private static void createDynamischenTypAndAdd2dTypList(DynamischeTypen dt) {
         DynamischerTyp dTyp = new DynamischerTyp();
         dTyp.setName(dt.name());
         dTypList.add(dTyp);
     }
 
-    private static void createDynamischesObject(DynamischeTypen dt, String position, String type, String name,
+    private static void createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen dt, String position, String type, String name,
                                                 String id, String container) {
         /*
          * every dTyp has a DynamischesObjektList
@@ -85,7 +85,7 @@ public class DkmsRoboterRueckmeldungClient {
         case "materials":
             {
                 EnumMap<MaterialKeys, String> sourceMap = new EnumMap<>(MaterialKeys.class);
-                sourceMap.put(MaterialKeys.materialId, id);
+                sourceMap.put(MaterialKeys.charge, id);
                 sourceMap.put(MaterialKeys.type, type);
                 sourceMap.put(MaterialKeys.name, name);
                 sourceMap.put(MaterialKeys.container, container);
