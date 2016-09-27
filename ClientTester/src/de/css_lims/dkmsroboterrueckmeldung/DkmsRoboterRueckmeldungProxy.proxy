@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="DkmsRoboterRueckmeldung_Service.xml"/>
+      <url path="DkmsRoboterRueckmeldung.wsdl"/>
+      <url path="DkmsRoboterRueckmeldungClient.java"/>
+      <url path="DkmsRoboterRueckmeldung.java"/>
+      <url path="DkmsRoboterRueckmeldung_Service.java"/>
+      <url path="ObjectFactory.java"/>
+      <url path="RueckmeldeungResponse.java"/>
+      <url path="package-info.java"/>
+      <url path="RueckmeldungRequest.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MIME"/>
+      <list n="LOCAL_FILES"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="DkmsRoboterRueckmeldung_Service.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_ENABLED"/>
+      <list n="PROXY_CLIENTS">
+         <url path="DkmsRoboterRueckmeldungClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <url n="PROXY_ORIGINAL_WSDL_URL" protocol="http" host="localhost" port="7101" path="/WebService-DkmsRoboterRueckmeldung-context-root/DkmsRoboterRueckmeldung" query="WSDL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="DkmsRoboterRueckmeldung">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldung"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="DkmsRoboterRueckmeldung"/>
+            <hash n="OPERATIONS">
+               <hash n="DkmsRoboterRueckmeldung">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_POLICY">
+                  <value n="addressing"/>
+                  <hash n="GLOBAL_CONFIG_PROPERTIES"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <list n="wsconfig"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="localhost" port="7101" path="/WebService-DkmsRoboterRueckmeldung-context-root/DkmsRoboterRueckmeldung"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="DkmsRoboterRueckmeldung"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://www.css-lims.de/DkmsRoboterRueckmeldung/"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../ClientTester.jpr"/>
+      <list n="PROXY_WSDL_IMPORT_LIST"/>
+      <url n="PROXY_WSDL_URL" path="DkmsRoboterRueckmeldung.wsdl"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://www.css-lims.de/DkmsRoboterRueckmeldung/}DkmsRoboterRueckmeldung"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://www.css-lims.de/DkmsRoboterRueckmeldung/}DkmsRoboterRueckmeldungbinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BOUND_OPERATION" v="de.css_lims.dkmsroboterrueckmeldung.RueckmeldeungResponse.DkmsRoboterRueckmeldung.de.css_lims.dkmsroboterrueckmeldung.RueckmeldungRequest"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="04ebabc2-0157-1000-803c-7f000101cbae"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="DkmsRoboterRueckmeldung"/>
+               <value n="PORT_BINDING_NAME" v="{http://www.css-lims.de/DkmsRoboterRueckmeldung/}DkmsRoboterRueckmeldungbinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="de.css_lims.dkmsroboterrueckmeldung.RueckmeldeungResponse.dkmsRoboterRueckmeldung.de.css_lims.dkmsroboterrueckmeldung.RueckmeldungRequest"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="localhost" port="7101" path="/WebService-DkmsRoboterRueckmeldung-context-root/DkmsRoboterRueckmeldung"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://www.css-lims.de/DkmsRoboterRueckmeldung/}DkmsRoboterRueckmeldung"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldungImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldung"/>
+               <value n="PT_TOP_DOWN_GENERATED_SEI_NAME" v="de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldung"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../ClientTester.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://www.css-lims.de/DkmsRoboterRueckmeldung/"/>
+         <value n="WS_URI" v="DkmsRoboterRueckmeldung"/>
+         <url n="WS_WSDL_FILE" path="DkmsRoboterRueckmeldung.wsdl"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="USE_WSDL_LOCATION" v="true"/>
+   </hash>
+</jdevws:WebServiceProxy>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions targetNamespace="http://wizard/" name="MyWebService1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:tns="http://wizard/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://wizard/" schemaLocation="MyWebService1_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="sayHello">
+    <part name="parameters" element="tns:sayHello"/>
+  </message>
+  <message name="sayHelloResponse">
+    <part name="parameters" element="tns:sayHelloResponse"/>
+  </message>
+  <portType name="MyWebService1">
+    <operation name="sayHello">
+      <input message="tns:sayHello" wsam:Action="http://wizard/MyWebService1/sayHelloRequest"/>
+      <output message="tns:sayHelloResponse" wsam:Action="http://wizard/MyWebService1/sayHelloResponse"/>
+    </operation>
+  </portType>
+  <binding name="MyWebService1PortBinding" type="tns:MyWebService1">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sayHello">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="MyWebService1">
+    <port name="MyWebService1Port" binding="tns:MyWebService1PortBinding">
+      <soap12:address location="http://localhost:7101/WebService-TopDown-context-root/MyWebService1ImplService"/>
+    </port>
+  </service>
+</definitions>
