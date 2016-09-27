@@ -36,13 +36,12 @@ public class DkmsRoboterRueckmeldungClient {
 
         // Add your code to call the desired methods.
 
-        rueckmeldungRequest = initializeStaticRequest(1, "Test5", "MSM2", "001", "boehm", "boehm", "MSM1 defekt");
+        rueckmeldungRequest = initializeStaticRequest(1, "Test7", "MSM2", "001", "boehm", "boehm", "MSM1 defekt");
 
         createDynamischenTypAndAdd2dTypList(DynamischeTypen.materials);
         createDynamischenTypAndAdd2dTypList(DynamischeTypen.targets);
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "1", "Destilled water", "L00024", "L00005", "tube");
-
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "1", "type", "Test6", "Test6", "96Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "1", "materials", "L00024", "id", "96Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "1", "type", "newPlate", "Test8", "96Plate");
 
         RueckmeldungResponse rueckmeldungResponse =
             dkmsRoboterRueckmeldung.dkmsRoboterRueckmeldung(rueckmeldungRequest);
