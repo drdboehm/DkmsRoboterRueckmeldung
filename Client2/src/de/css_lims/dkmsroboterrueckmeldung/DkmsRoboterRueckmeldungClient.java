@@ -5,8 +5,10 @@ import static de.css_lims.dkmsroboterrueckmeldung.RueckmeldungRequest.Dynamische
 import static de.css_lims.dkmsroboterrueckmeldung.RueckmeldungRequest.DynamischerTeil.DynamischerTyp.DynamischesObjekt;
 import static de.css_lims.dkmsroboterrueckmeldung.RueckmeldungRequest.DynamischerTeil.DynamischerTyp.DynamischesObjekt.WertObjekt;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.DynamischeTypen;
+import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.EinzeltrackKeys;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.MaterialKeys;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.TargetKeys;
+import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.ZuordnungKeys;
 
 import java.math.BigInteger;
 
@@ -38,48 +40,70 @@ public class DkmsRoboterRueckmeldungClient {
 
         rueckmeldungRequest = initializeStaticRequest(1, "DNAplateId", "Tecan_Evo01", "011", "boehm", "boehm", "");
 
+        /*
+ * create all types you need. Elements will be present in XML in the order as created
+ */
         createDynamischenTypAndAdd2dTypList(DynamischeTypen.materials);
-
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "1", "materials", "L00011",
-                                                         "Primer HLA-A", "tube");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "2", "materials", "L00012",
-                                                         "Primer HLA-B", "tube");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "3", "materials", "L00013",
-                                                         "Primer HLA-C", "tube");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "4", "materials", "L00014",
-                                                         "Primer HLA-DR", "tube");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "5", "materials", "L00015",
-                                                         "Primer HLA-DQ", "tube");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "6", "materials", "L00016",
-                                                         "Primer HLA-DP", "tube");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "7", "materials", "L00017",
-                                                         "Primer AB0 7a/b", "tube");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "8", "materials", "L00018",
-                                                         "Primer AB0 7b/CCR5/Rh", "tube");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "9", "materials", "L00019",
-                                                                 "Polymerase", "tube");  
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "10", "materials", "L00009",
-                                                                 "PCR Mastermix", "tube"); 
-        
-        
         createDynamischenTypAndAdd2dTypList(DynamischeTypen.targets);
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "1", "locusPCR", "HLA-A", "plateIdFromRack",
-                                                         "384Plate");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "2", "locusPCR", "HLA-B", "plateIdFromRack",
-                                                         "384Plate");
+        createDynamischenTypAndAdd2dTypList(DynamischeTypen.zuordnung);
+        System.out.println(dTypList.size());
+        
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "1", "L00019", "Polymerase");
 
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "3", "locusPCR", "HLA-C", "plateIdFromRack",
-                                                         "384Plate");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "4", "locusPCR", "HLA-DR", "plateIdFromRack",
-                                                         "384Plate");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "5", "locusPCR", "HLA-DQ", "plateIdFromRack",
-                                                         "384Plate");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "6", "locusPCR", "HLA-DP", "plateIdFromRack",
-                                                         "384Plate");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "7", "locusPCR", "AB0 7a/b", "plateIdFromRack",
-                                                         "384Plate");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "8", "locusPCR", "AB0 7b/CCR5/Rh", "plateIdFromRack",
-                                                         "384Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "2", "L00009", "PCR Mastermix");
+
+
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "3", "L00011", "Primer HLA-A");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "3", "HLA-A", "plateId_HLA-A");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "3", "L00011", "plateId_HLA-A");
+             createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "3", "L00019", "plateId_HLA-A");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "3", "L00009", "plateId_HLA-A");
+
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "4", "L00012", "Primer HLA-B");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "4", "HLA-B", "plateId_HLA-B");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "4", "L00012", "plateId_HLA-B");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "4", "L00019", "plateId_HLA-B");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "4", "L00009", "plateId_HLA-B");
+
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "5", "L00013", "Primer HLA-C");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "5", "HLA-C", "plateId_HLA-C");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "5", "L00013", "plateId_HLA-C");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "5", "L00019", "plateId_HLA-C");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "5", "L00009", "plateId_HLA-C");
+
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "6", "L00014", "Primer HLA-DR");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "6", "HLA-DR", "plateId_HLA-DR");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "6", "L00014", "plateId_HLA-DR");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "6", "L00019", "plateId_HLA-DR");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "6", "L00009", "plateId_HLA-DR");
+
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "7", "L00015", "Primer HLA-DQ");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "7", "HLA-DQ", "plateId_HLA-DQ");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "7", "L00015", "plateId_HLA-DQ");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "7", "L00019", "plateId_HLA-DQ");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "7", "L00009", "plateId_HLA-DQ");
+
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "8", "L00016", "Primer HLA-DP");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "8", "HLA-DP", "plateId_HLA-DP");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "8", "L00016", "plateId_HLA-DP");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "8", "L00019", "plateId_HLA-DP");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "8", "L00009", "plateId_HLA-DP");
+
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "9", "L00017", "Primer AB0 7a/b");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "9", "AB0 7a/b", "plateId_AB0 7a/b");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "9", "L00017", "plateId_AB0 7a/b");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "9", "L00019", "plateId_AB0 7a/b");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "9", "L00009", "plateId_AB0 7a/b");
+
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "10", "L00018",
+                                                         "Primer AB0 7b/CCR5/Rh");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "10", "AB0 7b/CCR5/Rh",
+                                                         "plateId_AB0 7b/CCR5/Rh");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "10", "L00019",
+                                                         "plateId_AB0 7b/CCR5/Rh");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung, "10", "L00009",
+                                                         "plateId_AB0 7b/CCR5/Rh");
+
         RueckmeldungResponse rueckmeldungResponse =
             dkmsRoboterRueckmeldung.dkmsRoboterRueckmeldung(rueckmeldungRequest);
         System.out.println(rueckmeldungResponse.getStatus());
@@ -92,9 +116,10 @@ public class DkmsRoboterRueckmeldungClient {
         dTypList.add(dTyp);
     }
 
+
+
     private static void createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen dt, String position,
-                                                                         String type, String name, String id,
-                                                                         String container) {
+                                                                         String... varargs) {
         /*
          * every dTyp has a DynamischesObjektList
          */
@@ -117,29 +142,43 @@ public class DkmsRoboterRueckmeldungClient {
          * and get and fill the  List<WertObjekt> wObjektList
          */
         List<WertObjekt> wObjektList = dObjekt.getWertObjekt();
-
+     
         switch (dt.name()) {
+        
         case "materials":
             {
                 EnumMap<MaterialKeys, String> sourceMap = new EnumMap<>(MaterialKeys.class);
-                sourceMap.put(MaterialKeys.charge, id);
-                sourceMap.put(MaterialKeys.type, type);
-                sourceMap.put(MaterialKeys.name, name);
-                sourceMap.put(MaterialKeys.container, container);
+                sourceMap.put(MaterialKeys.name, varargs[0]);
+                sourceMap.put(MaterialKeys.charge, varargs[1]);
                 createObjektList(wObjektList, sourceMap);
                 break;
             }
         case "targets":
             {
                 EnumMap<TargetKeys, String> sourceMap = new EnumMap<>(TargetKeys.class);
-                sourceMap.put(TargetKeys.rackId, id);
-                sourceMap.put(TargetKeys.type, type);
-                sourceMap.put(TargetKeys.name, name);
-                sourceMap.put(TargetKeys.container, container);
+                sourceMap.put(TargetKeys.name, varargs[0]);
+                sourceMap.put(TargetKeys.rackId, varargs[1]);
                 createObjektList(wObjektList, sourceMap);
                 break;
-
             }
+        case "zuordnung":
+            {
+                EnumMap<ZuordnungKeys, String> sourceMap = new EnumMap<>(ZuordnungKeys.class);
+                sourceMap.put(ZuordnungKeys.materialId, varargs[0]);
+                sourceMap.put(ZuordnungKeys.targetRackId, varargs[1]);
+                createObjektList(wObjektList, sourceMap);
+                break;
+            }
+            case "einzeltrack":
+                {
+                    EnumMap<EinzeltrackKeys, String> sourceMap = new EnumMap<>(EinzeltrackKeys.class);
+                    sourceMap.put(EinzeltrackKeys.sourceRackId, varargs[0]);
+                    sourceMap.put(EinzeltrackKeys.sourcePosId, varargs[1]);
+                    sourceMap.put(EinzeltrackKeys.targetRackId, varargs[2]);
+                    sourceMap.put(EinzeltrackKeys.targetPosId, varargs[3]);
+                    createObjektList(wObjektList, sourceMap);
+                    break;
+                }
         }
     }
 
@@ -164,6 +203,20 @@ public class DkmsRoboterRueckmeldungClient {
                 wObjekt.setInhalt(werteMap.get(temp));
                 wObjektList.add(wObjekt);
 
+            }
+            if (key instanceof ZuordnungKeys) {
+                ZuordnungKeys temp = (ZuordnungKeys) key;
+                WertObjekt wObjekt = new WertObjekt();
+                wObjekt.setName(temp.name());
+                wObjekt.setInhalt(werteMap.get(temp));
+                wObjektList.add(wObjekt);
+            }
+            if (key instanceof EinzeltrackKeys) {
+                EinzeltrackKeys temp = (EinzeltrackKeys) key;
+                WertObjekt wObjekt = new WertObjekt();
+                wObjekt.setName(temp.name());
+                wObjekt.setInhalt(werteMap.get(temp));
+                wObjektList.add(wObjekt);
             }
         }
 

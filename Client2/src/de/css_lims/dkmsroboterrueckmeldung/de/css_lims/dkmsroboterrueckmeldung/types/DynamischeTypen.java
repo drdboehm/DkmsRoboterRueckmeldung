@@ -2,5 +2,5 @@ package de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.
 
 
 public enum DynamischeTypen {
-    materials, sources, targets, target_pos, source_pos
+    materials, targets, zuordnung, einzeltrack
 }
