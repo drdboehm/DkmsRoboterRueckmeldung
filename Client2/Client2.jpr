@@ -86,9 +86,88 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
+         <hash n="CustomDkmsRoboterRueckmeldungGenerator">
+            <hash n="archiveOptions">
+               <value n="hasManifest" v="true"/>
+            </hash>
+            <hash n="fileGroups">
+               <list n="groups">
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="2"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="7"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="Project Output"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="project-output"/>
+                     <value n="type" v="1"/>
+                  </hash>
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="2"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="7"/>
+                        </hash>
+                        <hash>
+                           <url n="location" path="."/>
+                           <value n="type" v="1"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="METAINF"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="classes/META-INF/jax-ws-catalog.xml"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                           <hash>
+                              <value n="pattern" v="classes/META-INF/"/>
+                              <value n="type" v="1"/>
+                           </hash>
+                           <hash>
+                              <value n="pattern" v="Client2.jpr"/>
+                              <value n="type" v="1"/>
+                           </hash>
+                           <hash>
+                              <value n="pattern" v="src/de/"/>
+                              <value n="type" v="1"/>
+                           </hash>
+                           <hash>
+                              <value n="pattern" v="classes/de/"/>
+                              <value n="type" v="1"/>
+                           </hash>
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="targetWithinJar" v="META-INF"/>
+                     <value n="type" v="1"/>
+                  </hash>
+               </list>
+            </hash>
+            <url n="jarURL" path="deploy/customdkmsroboterrueckmeldunggenerator.jar"/>
+            <value n="profileClass" v="oracle.jdeveloper.deploy.jar.ClientProfile"/>
+            <value n="profileName" v="CustomDkmsRoboterRueckmeldungGenerator"/>
+         </hash>
          <hash n="DkmsRoboterRueckmeldung-Client">
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
+               <value n="mainClass" v="de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldungClient"/>
             </hash>
             <hash n="fileGroups">
                <list n="groups">
@@ -121,6 +200,7 @@
          </hash>
       </hash>
       <list n="profileList">
+         <string v="CustomDkmsRoboterRueckmeldungGenerator"/>
          <string v="DkmsRoboterRueckmeldung-Client"/>
       </list>
    </hash>
