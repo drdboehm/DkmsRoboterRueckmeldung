@@ -36,13 +36,50 @@ public class DkmsRoboterRueckmeldungClient {
 
         // Add your code to call the desired methods.
 
-        rueckmeldungRequest = initializeStaticRequest(1, "Test7", "MSM2", "001", "boehm", "boehm", "MSM1 defekt");
+        rueckmeldungRequest = initializeStaticRequest(1, "DNAplateId", "Tecan_Evo01", "011", "boehm", "boehm", "");
 
         createDynamischenTypAndAdd2dTypList(DynamischeTypen.materials);
-        createDynamischenTypAndAdd2dTypList(DynamischeTypen.targets);
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "1", "materials", "L00024", "id", "96Plate");
-        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "1", "type", "newPlate", "Test8", "96Plate");
 
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "1", "materials", "L00011",
+                                                         "Primer HLA-A", "tube");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "2", "materials", "L00012",
+                                                         "Primer HLA-B", "tube");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "3", "materials", "L00013",
+                                                         "Primer HLA-C", "tube");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "4", "materials", "L00014",
+                                                         "Primer HLA-DR", "tube");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "5", "materials", "L00015",
+                                                         "Primer HLA-DQ", "tube");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "6", "materials", "L00016",
+                                                         "Primer HLA-DP", "tube");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "7", "materials", "L00017",
+                                                         "Primer AB0 7a/b", "tube");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "8", "materials", "L00018",
+                                                         "Primer AB0 7b/CCR5/Rh", "tube");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "9", "materials", "L00019",
+                                                                 "Polymerase", "tube");  
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "10", "materials", "L00009",
+                                                                 "PCR Mastermix", "tube"); 
+        
+        
+        createDynamischenTypAndAdd2dTypList(DynamischeTypen.targets);
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "1", "locusPCR", "HLA-A", "plateIdFromRack",
+                                                         "384Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "2", "locusPCR", "HLA-B", "plateIdFromRack",
+                                                         "384Plate");
+
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "3", "locusPCR", "HLA-C", "plateIdFromRack",
+                                                         "384Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "4", "locusPCR", "HLA-DR", "plateIdFromRack",
+                                                         "384Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "5", "locusPCR", "HLA-DQ", "plateIdFromRack",
+                                                         "384Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "6", "locusPCR", "HLA-DP", "plateIdFromRack",
+                                                         "384Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "7", "locusPCR", "AB0 7a/b", "plateIdFromRack",
+                                                         "384Plate");
+        createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets, "8", "locusPCR", "AB0 7b/CCR5/Rh", "plateIdFromRack",
+                                                         "384Plate");
         RueckmeldungResponse rueckmeldungResponse =
             dkmsRoboterRueckmeldung.dkmsRoboterRueckmeldung(rueckmeldungRequest);
         System.out.println(rueckmeldungResponse.getStatus());
@@ -55,8 +92,9 @@ public class DkmsRoboterRueckmeldungClient {
         dTypList.add(dTyp);
     }
 
-    private static void createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen dt, String position, String type, String name,
-                                                String id, String container) {
+    private static void createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen dt, String position,
+                                                                         String type, String name, String id,
+                                                                         String container) {
         /*
          * every dTyp has a DynamischesObjektList
          */
