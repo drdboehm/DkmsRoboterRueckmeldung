@@ -27,7 +27,7 @@ public class Zuordnung {
     @Override
     public String toString() {
         // TODO Implement this method
-        StringBuffer sb = new StringBuffer();
+        StringBuffer sb = new StringBuffer("\n");
         for (Material  m: materialList)
             sb.append(m.toString() + "\n");
         for (Target  t: targetList)

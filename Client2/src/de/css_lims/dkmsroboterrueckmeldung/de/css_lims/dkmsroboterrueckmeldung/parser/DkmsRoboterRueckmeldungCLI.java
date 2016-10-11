@@ -4,6 +4,11 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
+import de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldung;
+import de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldungClient;
+import de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldung_Service;
+import de.css_lims.dkmsroboterrueckmeldung.RueckmeldungRequest;
+import de.css_lims.dkmsroboterrueckmeldung.RueckmeldungResponse;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.converter.MaterialConverter;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.converter.TargetConverter;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.converter.ZuordnungConverter;
@@ -17,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Parameters(separators = "=")
-public class JCommanderExample {
+public class DkmsRoboterRueckmeldungCLI {
 
     @Parameter(names = { "--rTyp", "-rt" }, arity = 1, required = true)
     private String requestTyp;
@@ -43,7 +48,7 @@ public class JCommanderExample {
     @Parameter(names = { "--target", "-t" }, description = "Target List", converter = TargetConverter.class)
     private static List<Target> targets = new ArrayList<>();
 
-    @Parameter(names = { "--zuordnung", "-z" }, description = "Zuordnung",  converter = ZuordnungConverter.class)
+    @Parameter(names = { "--zuordnung", "-z" }, description = "Zuordnung", converter = ZuordnungConverter.class)
     private static List<Zuordnung> zuordnungen = new ArrayList<>();
 
     @Parameter(names = "--password", description = "Connection password", password = true, echoInput = true)
@@ -53,12 +58,13 @@ public class JCommanderExample {
     File file;
 
     public static void main(String[] args) {
-        JCommanderExample jct = new JCommanderExample();
-        new JCommander(jct, args);
-        jct.run();
+        DkmsRoboterRueckmeldungCLI dkmsCLI = new DkmsRoboterRueckmeldungCLI();
+        new JCommander(dkmsCLI, args);
+        dkmsCLI.run();
     } // end main
 
     private void run() {
+
         System.out.printf("Request-Typ: %s\tRoboterId: %s\tProgrammId:  %s%n", requestTyp, roboterId, programmId);
         System.out.printf("UserId:  %s\tKontrolleur-Id: %s  %n", userBedienId, userKontrolleurId);
         System.out.printf("RackId: %s%n", rackId);
@@ -68,10 +74,23 @@ public class JCommanderExample {
         for (Target t : targets) {
             System.out.println(t);
         }
-       
+
         for (Zuordnung z : zuordnungen) {
             System.out.println(z);
         }
+
+    //    DkmsRoboterRueckmeldungClient dkmsRRClient = new DkmsRoboterRueckmeldungClient();
+        
+        DkmsRoboterRueckmeldung_Service dkmsRoboterRueckmeldung_Service = new DkmsRoboterRueckmeldung_Service();
+        DkmsRoboterRueckmeldung dkmsRoboterRueckmeldung = dkmsRoboterRueckmeldung_Service.getDkmsRoboterRueckmeldung();
+        
+        RueckmeldungRequest rueckmeldungRequest =
+            DkmsRoboterRueckmeldungClient.initializeStaticRequest(Integer.parseInt(requestTyp), rackId, roboterId,
+                                                                  programmId, userBedienId, userKontrolleurId,
+                                                                  "hinweisText");
+        RueckmeldungResponse rueckmeldungResponse =
+            dkmsRoboterRueckmeldung.dkmsRoboterRueckmeldung(rueckmeldungRequest);
+        System.out.println(rueckmeldungResponse.getStatus());
     }
 
     public static Material getMaterialByPosition(String position) {
@@ -82,7 +101,7 @@ public class JCommanderExample {
         }
         return null;
     }
-    
+
     public static Target getTargetByPosition(String position) {
         for (Target t : getTargets()) {
             if (t.getPosition().equals(position)) {
@@ -92,7 +111,7 @@ public class JCommanderExample {
         return null;
     }
 
-    public static  List<Material> getMaterials() {
+    public static List<Material> getMaterials() {
         return materials;
     }
 
@@ -101,15 +120,15 @@ public class JCommanderExample {
     }
 
     public static void setMaterials(List<Material> materials) {
-        JCommanderExample.materials = materials;
+        DkmsRoboterRueckmeldungCLI.materials = materials;
     }
 
     public static void setTargets(List<Target> targets) {
-        JCommanderExample.targets = targets;
+        DkmsRoboterRueckmeldungCLI.targets = targets;
     }
 
     public static void setZuordnungen(List<Zuordnung> zuordnungen) {
-        JCommanderExample.zuordnungen = zuordnungen;
+        DkmsRoboterRueckmeldungCLI.zuordnungen = zuordnungen;
     }
 
     public static List<Zuordnung> getZuordnungen() {

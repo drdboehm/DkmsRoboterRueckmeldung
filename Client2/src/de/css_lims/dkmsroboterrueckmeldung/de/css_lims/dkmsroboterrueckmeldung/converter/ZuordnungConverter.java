@@ -2,7 +2,7 @@ package de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.
 
 import com.beust.jcommander.IStringConverter;
 
-import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.parser.JCommanderExample;
+import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.parser.DkmsRoboterRueckmeldungCLI;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.Material;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.Target;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.Zuordnung;
@@ -21,12 +21,12 @@ public class ZuordnungConverter implements IStringConverter<Zuordnung> {
         for (String s : args) {
             if (s.startsWith("m")) {
                 position = s.substring(1);
-                Material m = JCommanderExample.getMaterialByPosition(position);
+                Material m = DkmsRoboterRueckmeldungCLI.getMaterialByPosition(position);
                 z.getMaterialList().add(m);
             }
             if (s.startsWith("t")) {
                 position = s.substring(1);
-                Target t =  JCommanderExample.getTargetByPosition(position);
+                Target t = DkmsRoboterRueckmeldungCLI.getTargetByPosition(position);
                 z.getTargetList().add(t);
             }
         }

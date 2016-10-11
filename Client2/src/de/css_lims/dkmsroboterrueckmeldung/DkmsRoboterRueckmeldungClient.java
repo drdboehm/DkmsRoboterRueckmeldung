@@ -222,7 +222,7 @@ public class DkmsRoboterRueckmeldungClient {
 
     }
 
-    private static RueckmeldungRequest initializeStaticRequest(int requestTyp, String rackId, String roboterId,
+    public static RueckmeldungRequest initializeStaticRequest(int requestTyp, String rackId, String roboterId,
                                                                String programmId, String userBedienId,
                                                                String userKontrolleurId, String hinweisText) {
         RueckmeldungRequest rueckmeldungRequest = new RueckmeldungRequest();
