@@ -74,6 +74,7 @@
       <list n="technologyScope">
          <string v="Database"/>
          <string v="Java"/>
+         <string v="Maven"/>
          <string v="TopLink"/>
          <string v="WSDL"/>
          <string v="WSPolicy"/>
@@ -204,6 +205,9 @@
          <string v="DkmsRoboterRueckmeldung-Client"/>
       </list>
    </hash>
+   <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
+      <url n="pomfileURL" path="pom.xml"/>
+   </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
       <value n="j2eeWebAppName" v="Application2-Client-webapp"/>
       <value n="j2eeWebContextRoot" v="Application2-Client-context-root"/>
@@ -217,6 +221,19 @@
             <url path="src/"/>
          </list>
       </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="JCommandExample">
+            <value n="custom" v="false"/>
+            <value n="name" v="JCommandExample"/>
+            <value n="programArguments" v="-rt=1 -r=&quot;Tecan Evo01&quot; -p=11 -u=boehm  -k=boehm -ra=Test12  -m=L00011:&quot;Primer HLA-A&quot; -t=plateId_HLA-A:HLA-A -m=L00012:&quot;Primer HLA-B&quot; -t=plateId_HLA-B:HLA-B -m=L00013:&quot;Primer HLA-C&quot; -t=plateId_HLA-C:HLA-C -m=L00014:&quot;Primer HLA-DR&quot;    -t=plateId_HLA-DR:HLA-DR  -m=L00015:&quot;Primer HLA-DQ&quot; -t=plateId_HLA-DQ:HLA-DQ -m=L00016:&quot;Primer HLA-DP&quot; -t=plateId_HLA-DP:HLA-DP -m=L00017:&quot;PrimerAB07a/b&quot; -t=plateId_AB07a/b:AB07a/b -m=L00017:PrimerAB07b/CCR5 -t=plateId_AB07b/CCR5:AB07b/CCR5 -m=9:L0019:Polymerase -m=10:L0009:&quot;PCR Mastermix&quot;  -z=m1:m9:m10:t1 -z=m2:m9:m10:t2 -z=m3:m9:m10:t3 -z=m4:m9:m10:t4 -z=m5:m9:m10:t5 -z=m6:m9:m10:t6 -z=m7:m9:m10:t7 -z=m8:m9:m10:t8"/>
+            <value n="targetURL"/>
+         </hash>
+      </hash>
+      <list n="runConfigurationList">
+         <string v="JCommandExample"/>
+      </list>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">
