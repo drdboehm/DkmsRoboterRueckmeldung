@@ -87,6 +87,40 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
+         <hash n="CLI">
+            <hash n="archiveOptions">
+               <value n="hasManifest" v="true"/>
+               <value n="mainClass" v="de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.parser.DkmsRoboterRueckmeldungCLI"/>
+            </hash>
+            <hash n="fileGroups">
+               <list n="groups">
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="2"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="7"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="Project Output"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="project-output"/>
+                     <value n="type" v="1"/>
+                  </hash>
+               </list>
+            </hash>
+            <url n="jarURL" path="deploy/cli.jar"/>
+            <value n="profileClass" v="oracle.jdeveloper.deploy.jar.ClientProfile"/>
+            <value n="profileName" v="CLI"/>
+         </hash>
          <hash n="CustomDkmsRoboterRueckmeldungGenerator">
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
@@ -203,6 +237,7 @@
       <list n="profileList">
          <string v="CustomDkmsRoboterRueckmeldungGenerator"/>
          <string v="DkmsRoboterRueckmeldung-Client"/>
+         <string v="CLI"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
@@ -227,8 +262,8 @@
          <hash n="JCommandExample">
             <value n="custom" v="false"/>
             <value n="name" v="JCommandExample"/>
-            <value n="programArguments" v="-rt=1 -r=&quot;Tecan Evo01&quot; -p=11 -u=boehm  -k=boehm -ra=Test12  -m=L00011:&quot;Primer HLA-A&quot; -t=plateId_HLA-A:HLA-A -m=L00012:&quot;Primer HLA-B&quot; -t=plateId_HLA-B:HLA-B -m=L00013:&quot;Primer HLA-C&quot; -t=plateId_HLA-C:HLA-C -m=L00014:&quot;Primer HLA-DR&quot;    -t=plateId_HLA-DR:HLA-DR  -m=L00015:&quot;Primer HLA-DQ&quot; -t=plateId_HLA-DQ:HLA-DQ -m=L00016:&quot;Primer HLA-DP&quot; -t=plateId_HLA-DP:HLA-DP -m=L00017:&quot;PrimerAB07a/b&quot; -t=plateId_AB07a/b:AB07a/b -m=L00017:PrimerAB07b/CCR5 -t=plateId_AB07b/CCR5:AB07b/CCR5 -m=9:L0019:Polymerase -m=10:L0009:&quot;PCR Mastermix&quot;  -z=m1:m9:m10:t1 -z=m2:m9:m10:t2 -z=m3:m9:m10:t3 -z=m4:m9:m10:t4 -z=m5:m9:m10:t5 -z=m6:m9:m10:t6 -z=m7:m9:m10:t7 -z=m8:m9:m10:t8"/>
-            <value n="targetURL"/>
+            <value n="programArguments" v="--help -rt=1 -r=&quot;Tecan Evo01&quot; -p=11 -u=boehm  -k=boehm -ra=Test12 -hw=&quot;Tecan Evo02 defekt&quot; -m=L00011:&quot;Primer HLA-A&quot; -t=plateId_HLA-A:HLA-A -m=L00012:&quot;Primer HLA-B&quot; -t=plateId_HLA-B:HLA-B -m=L00013:&quot;Primer HLA-C&quot; -t=plateId_HLA-C:HLA-C -m=L00014:&quot;Primer HLA-DR&quot;    -t=plateId_HLA-DR:HLA-DR  -m=L00015:&quot;Primer HLA-DQ&quot; -t=plateId_HLA-DQ:HLA-DQ -m=L00016:&quot;Primer HLA-DP&quot; -t=plateId_HLA-DP:HLA-DP -m=L00017:&quot;PrimerAB07a/b&quot; -t=plateId_AB07a/b:AB07a/b -m=L00017:PrimerAB07b/CCR5 -t=plateId_AB07b/CCR5:AB07b/CCR5 -m=9:L0019:Polymerase -m=10:L0009:&quot;PCR Mastermix&quot;  -z=m1:m9:m10:t1 -z=m2:m9:m10:t2 -z=m3:m9:m10:t3 -z=m4:m9:m10:t4 -z=m5:m9:m10:t5 -z=m6:m9:m10:t6 -z=m7:m9:m10:t7 -z=m8:m9:m10:t8"/>
+            <url n="targetURL" path="src/de/css_lims/dkmsroboterrueckmeldung/de/css_lims/dkmsroboterrueckmeldung/parser/DkmsRoboterRueckmeldungCLI.java"/>
          </hash>
       </hash>
       <list n="runConfigurationList">

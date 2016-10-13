@@ -46,7 +46,7 @@ public class DkmsRoboterRueckmeldungClient {
         createDynamischenTypAndAdd2dTypList(DynamischeTypen.materials);
         createDynamischenTypAndAdd2dTypList(DynamischeTypen.targets);
         createDynamischenTypAndAdd2dTypList(DynamischeTypen.zuordnung);
-        System.out.println(dTypList.size());
+       // System.out.println(dTypList.size());
         
         createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials, "1", "L00019", "Polymerase");
 
@@ -110,7 +110,7 @@ public class DkmsRoboterRueckmeldungClient {
 
     } // end main
 
-    private static void createDynamischenTypAndAdd2dTypList(DynamischeTypen dt) {
+    public static void createDynamischenTypAndAdd2dTypList(DynamischeTypen dt) {
         DynamischerTyp dTyp = new DynamischerTyp();
         dTyp.setName(dt.name());
         dTypList.add(dTyp);
@@ -118,7 +118,7 @@ public class DkmsRoboterRueckmeldungClient {
 
 
 
-    private static void createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen dt, String position,
+    public static void createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen dt, String position,
                                                                          String... varargs) {
         /*
          * every dTyp has a DynamischesObjektList

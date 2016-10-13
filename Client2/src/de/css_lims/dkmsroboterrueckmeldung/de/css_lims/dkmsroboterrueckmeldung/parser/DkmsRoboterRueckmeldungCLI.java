@@ -12,11 +12,10 @@ import de.css_lims.dkmsroboterrueckmeldung.RueckmeldungResponse;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.converter.MaterialConverter;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.converter.TargetConverter;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.converter.ZuordnungConverter;
+import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.DynamischeTypen;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.Material;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.Target;
 import de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.types.Zuordnung;
-
-import java.io.File;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,23 +23,26 @@ import java.util.List;
 @Parameters(separators = "=")
 public class DkmsRoboterRueckmeldungCLI {
 
-    @Parameter(names = { "--rTyp", "-rt" }, arity = 1, required = true)
+    @Parameter(names = { "--rTyp", "-rt" }, description = "Request-Typ <0 = Validierung, 1 = Run>", arity = 1, required = true)
     private String requestTyp;
 
-    @Parameter(names = { "--rID", "-r" }, arity = 1, required = true)
+    @Parameter(names = { "--rID", "-r" }, description = "Roboter-Id", arity = 1, required = true)
     private String roboterId;
 
-    @Parameter(names = { "--pID", "-p" }, arity = 1, required = true)
+    @Parameter(names = { "--pID", "-p" },description = "Roboter-Programm-Id", arity = 1, required = true)
     private String programmId;
 
-    @Parameter(names = { "--uID", "-u" }, arity = 1, required = true)
+    @Parameter(names = { "--uID", "-u" }, description = "Bedien-Nutzer-Id", arity = 1, required = true)
     private String userBedienId;
 
-    @Parameter(names = { "--kID", "-k" }, arity = 1)
+    @Parameter(names = { "--kID", "-k" }, description = "Kontrolleur-Id", arity = 1)
     private String userKontrolleurId;
 
-    @Parameter(names = { "--rackID", "-ra" }, arity = 1, required = true)
+    @Parameter(names = { "--rackID", "-ra" }, description = "Rack-Id", arity = 1, required = true)
     private String rackId;
+
+    @Parameter(names = { "--hinweisText", "-hw" }, description = "Hinweistext", arity = 1)
+    private String hinweisText = "";
 
     @Parameter(names = { "--material", "-m" }, description = "Materials List", converter = MaterialConverter.class)
     private static List<Material> materials = new ArrayList<>();
@@ -51,16 +53,21 @@ public class DkmsRoboterRueckmeldungCLI {
     @Parameter(names = { "--zuordnung", "-z" }, description = "Zuordnung", converter = ZuordnungConverter.class)
     private static List<Zuordnung> zuordnungen = new ArrayList<>();
 
-    @Parameter(names = "--password", description = "Connection password", password = true, echoInput = true)
-    private String password;
-
-    @Parameter(names = "--file", converter = FileConverter.class)
-    File file;
+      
+    @Parameter(names = {"--help","-h"}, description = "this help",help = true)
+        private boolean help = false;
 
     public static void main(String[] args) {
         DkmsRoboterRueckmeldungCLI dkmsCLI = new DkmsRoboterRueckmeldungCLI();
-        new JCommander(dkmsCLI, args);
+        JCommander jc = new JCommander(dkmsCLI, args);
+        jc.setProgramName("java -jar DkmsRoboterCLI.jar");
+        if (dkmsCLI.help) {
+            jc.usage(); 
+            return;
+        }
+        
         dkmsCLI.run();
+       
     } // end main
 
     private void run() {
@@ -68,6 +75,7 @@ public class DkmsRoboterRueckmeldungCLI {
         System.out.printf("Request-Typ: %s\tRoboterId: %s\tProgrammId:  %s%n", requestTyp, roboterId, programmId);
         System.out.printf("UserId:  %s\tKontrolleur-Id: %s  %n", userBedienId, userKontrolleurId);
         System.out.printf("RackId: %s%n", rackId);
+
         for (Material s : materials) {
             System.out.println(s);
         }
@@ -79,15 +87,48 @@ public class DkmsRoboterRueckmeldungCLI {
             System.out.println(z);
         }
 
-    //    DkmsRoboterRueckmeldungClient dkmsRRClient = new DkmsRoboterRueckmeldungClient();
-        
+        //    DkmsRoboterRueckmeldungClient dkmsRRClient = new DkmsRoboterRueckmeldungClient();
+
         DkmsRoboterRueckmeldung_Service dkmsRoboterRueckmeldung_Service = new DkmsRoboterRueckmeldung_Service();
         DkmsRoboterRueckmeldung dkmsRoboterRueckmeldung = dkmsRoboterRueckmeldung_Service.getDkmsRoboterRueckmeldung();
-        
+
         RueckmeldungRequest rueckmeldungRequest =
             DkmsRoboterRueckmeldungClient.initializeStaticRequest(Integer.parseInt(requestTyp), rackId, roboterId,
                                                                   programmId, userBedienId, userKontrolleurId,
-                                                                  "hinweisText");
+                                                                  hinweisText);
+
+
+        if (!materials.isEmpty()) {
+            DkmsRoboterRueckmeldungClient.createDynamischenTypAndAdd2dTypList(DynamischeTypen.materials);
+            for (Material m : materials) {
+                DkmsRoboterRueckmeldungClient.createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials,
+                                                                                               m.getPosition(),
+                                                                                               m.getMaterialId(),
+                                                                                               m.getName());
+            }
+        }
+        if (!targets.isEmpty()) {
+            DkmsRoboterRueckmeldungClient.createDynamischenTypAndAdd2dTypList(DynamischeTypen.targets);
+            for (Target t : targets) {
+                DkmsRoboterRueckmeldungClient.createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets,
+                                                                                               t.getPosition(),
+                                                                                               t.getName(),
+                                                                                               t.getTargetId());
+            }
+        }
+        if (!zuordnungen.isEmpty()) {
+            DkmsRoboterRueckmeldungClient.createDynamischenTypAndAdd2dTypList(DynamischeTypen.zuordnung);
+            for (Zuordnung  z :zuordnungen) {
+                for (Target t : z.getTargetList())
+                    for (Material m : z.getMaterialList())
+                DkmsRoboterRueckmeldungClient.createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung,
+                                                                                               m.getPosition(),
+                                                                                               m.getMaterialId() ,
+                                                                                               t.getTargetId());
+            }
+        }
+
+
         RueckmeldungResponse rueckmeldungResponse =
             dkmsRoboterRueckmeldung.dkmsRoboterRueckmeldung(rueckmeldungRequest);
         System.out.println(rueckmeldungResponse.getStatus());
