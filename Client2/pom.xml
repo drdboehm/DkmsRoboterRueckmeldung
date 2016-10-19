@@ -80,7 +80,7 @@
                 <archive>
                 <manifest>
                 <addClasspath>true</addClasspath>
-                <mainClass>de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.parser.DkmsRoboterRueckmeldungCLI</mainClass>
+                <mainClass>de.css_lims.dkmsroboterrueckmeldung.dkms.parser.DkmsRoboterRueckmeldungCLI</mainClass>
                 </manifest>
                 </archive>
                     <descriptorRefs>
