@@ -26,7 +26,6 @@
    </list>
    <list n="listOfChildren">
       <hash><url n="URL" path="Client2/Client2.jpr"/></hash>
-      <hash><url n="URL" path="Client3/Client3.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
       <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">

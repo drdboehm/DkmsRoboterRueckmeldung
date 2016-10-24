@@ -1,4 +1,0 @@
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-  <system systemId="http://192.168.22.58:8080/DkmsRoboter2/wsdl/DkmsRoboterRueckmeldung.wsdl#%7Bhttp%3A%2F%2Fwww.css-lims.de%2FDkmsRoboterRueckmeldung%2F%7DDkmsRoboterRueckmeldung"
-          uri="../de/css_lims/dkmsroboterrueckmeldung/DkmsRoboterRueckmeldung.wsdl"/>
-</catalog>
