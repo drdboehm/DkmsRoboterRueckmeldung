@@ -5,10 +5,10 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
 import de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldung;
-import de.css_lims.dkmsroboterrueckmeldung.dkms.DkmsRoboterRueckmeldungClient;
 import de.css_lims.dkmsroboterrueckmeldung.DkmsRoboterRueckmeldung_Service;
 import de.css_lims.dkmsroboterrueckmeldung.RueckmeldungRequest;
 import de.css_lims.dkmsroboterrueckmeldung.RueckmeldungResponse;
+import de.css_lims.dkmsroboterrueckmeldung.dkms.DkmsRoboterRueckmeldungRequestClient;
 import de.css_lims.dkmsroboterrueckmeldung.dkms.converter.MaterialConverter;
 import de.css_lims.dkmsroboterrueckmeldung.dkms.converter.TargetConverter;
 import de.css_lims.dkmsroboterrueckmeldung.dkms.converter.ZuordnungConverter;
@@ -81,25 +81,24 @@ public class DkmsRoboterRueckmeldungCLI {
 
 
         RueckmeldungRequest rueckmeldungRequest =
-            DkmsRoboterRueckmeldungClient.initializeStaticRequest(Integer.parseInt(requestTyp), rackId, roboterId,
+            DkmsRoboterRueckmeldungRequestClient.initializeStaticRueckmeldungRequest(Integer.parseInt(requestTyp), rackId, roboterId,
                                                                   programmId, userBedienId, userKontrolleurId,
                                                                   hinweisText);
 
 
         if (!materials.isEmpty()) {
-            DkmsRoboterRueckmeldungClient.createDynamischenTypAndAdd2dTypList(DynamischeTypen.materials);
+            DkmsRoboterRueckmeldungRequestClient.createDynamischenTypAndAdd2dTypList(DynamischeTypen.materials);
             for (Material m : materials) {
-                DkmsRoboterRueckmeldungClient.createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials,
+                DkmsRoboterRueckmeldungRequestClient.createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.materials,
                                                                                                m.getPosition(),
                                                                                                m.getMaterialId(),
-                                                                                               m.getName(),
-                                                                                               "96Plate");
+                                                                                               m.getName(), "96Plate");
             }
         }
         if (!targets.isEmpty()) {
-            DkmsRoboterRueckmeldungClient.createDynamischenTypAndAdd2dTypList(DynamischeTypen.targets);
+            DkmsRoboterRueckmeldungRequestClient.createDynamischenTypAndAdd2dTypList(DynamischeTypen.targets);
             for (Target t : targets) {
-                DkmsRoboterRueckmeldungClient.createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets,
+                DkmsRoboterRueckmeldungRequestClient.createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.targets,
                                                                                                t.getPosition(),
                                                                                                t.getName(),
                                                                                                t.getTargetId(),
@@ -107,11 +106,11 @@ public class DkmsRoboterRueckmeldungCLI {
             }
         }
         if (!zuordnungen.isEmpty()) {
-            DkmsRoboterRueckmeldungClient.createDynamischenTypAndAdd2dTypList(DynamischeTypen.zuordnung);
+            DkmsRoboterRueckmeldungRequestClient.createDynamischenTypAndAdd2dTypList(DynamischeTypen.zuordnung);
             for (Zuordnung z : zuordnungen) {
                 for (Target t : z.getTargetList())
                     for (Material m : z.getMaterialList())
-                        DkmsRoboterRueckmeldungClient.createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung,
+                        DkmsRoboterRueckmeldungRequestClient.createDynamischesObject2DynamischenTypAtPosition(DynamischeTypen.zuordnung,
                                                                                                        m.getPosition(),
                                                                                                        m.getMaterialId(),
                                                                                                        t.getTargetId());
