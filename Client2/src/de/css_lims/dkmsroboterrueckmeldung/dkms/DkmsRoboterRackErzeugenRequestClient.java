@@ -43,8 +43,8 @@ public class DkmsRoboterRackErzeugenRequestClient {
         // Add your code to call the desired methods.
 
         rackErzeugenRequest =
-            initializeStaticRackErzeugenRequest(1, "rackId", "roboterId", "programmId", "userBedienId",
-                                                "userKontrolleurId", "hinweisText");
+            initializeStaticRackErzeugenRequest(0, "Test20", "1", "Tecan", "11", "boehm",
+                                                "boehm", "hinweisText");
 
 
         RackErzeugenResponse rackErzeugenResponse =
@@ -166,7 +166,7 @@ public class DkmsRoboterRackErzeugenRequestClient {
 
     }
 
-    public static RackErzeugenRequest initializeStaticRackErzeugenRequest(int requestTyp, String rackId,
+    public static RackErzeugenRequest initializeStaticRackErzeugenRequest(int requestTyp, String rackId, String rackTypId,
                                                                           String roboterId, String programmId,
                                                                           String userBedienId, String userKontrolleurId,
                                                                           String hinweisText) {
@@ -184,6 +184,7 @@ public class DkmsRoboterRackErzeugenRequestClient {
         rackErzeugenRequest.setZeitstempel(xgcal);
 
         rackErzeugenRequest.setRackId(rackId);
+        rackErzeugenRequest.setRackTypId(rackTypId);
         rackErzeugenRequest.setRoboterId(roboterId);
         rackErzeugenRequest.setUserBedienerId(userBedienId);
         rackErzeugenRequest.setProgrammId(programmId);
@@ -203,13 +204,13 @@ public class DkmsRoboterRackErzeugenRequestClient {
         /*
                                                                     * set dynamischen Teil - there is only ONE in each XML request.
                                                                     */
-        //      dTeil = new DynamischerTeil();
-        //      rackErzeugenRequest.setDynamischerTeil(dTeil);
+            dTeil = new DynamischerTeil();
+            rackErzeugenRequest.setDynamischerTeil(dTeil);
 
         /*
                                                                     * dTeil has ONE List of dTyps, so get and fill it
                                                                     */
-        //      dTypList = rackErzeugenRequest.getDynamischerTeil().getDynamischerTyp();
+           dTypList = rackErzeugenRequest.getDynamischerTeil().getDynamischerTyp();
 
         return rackErzeugenRequest;
     }

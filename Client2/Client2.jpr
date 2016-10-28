@@ -90,7 +90,7 @@
          <hash n="CLI">
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
-               <value n="mainClass" v="de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkmsroboterrueckmeldung.parser.DkmsRoboterRueckmeldungCLI"/>
+               <value n="mainClass" v="de.css_lims.dkmsroboterrueckmeldung.de.css_lims.dkms.parser.DkmsRoboterRueckmeldungCLI"/>
             </hash>
             <hash n="fileGroups">
                <list n="groups">
