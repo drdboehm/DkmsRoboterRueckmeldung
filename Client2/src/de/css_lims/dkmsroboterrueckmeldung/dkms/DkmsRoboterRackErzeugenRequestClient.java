@@ -90,8 +90,8 @@ public class DkmsRoboterRackErzeugenRequestClient {
         case "materials":
             {
                 EnumMap<MaterialKeys, String> sourceMap = new EnumMap<>(MaterialKeys.class);
-                sourceMap.put(MaterialKeys.name, varargs[0]);
-                sourceMap.put(MaterialKeys.charge, varargs[1]);
+                sourceMap.put(MaterialKeys.materialId, varargs[0]);
+                sourceMap.put(MaterialKeys.markierung, varargs[1]);
                 sourceMap.put(MaterialKeys.container, varargs[2]);
                 createObjektList(wObjektList, sourceMap);
                 break;

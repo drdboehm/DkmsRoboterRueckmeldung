@@ -61,7 +61,7 @@ public class DkmsRoboterRueckmeldungCLI {
     public static void main(String[] args) {
         DkmsRoboterRueckmeldungCLI dkmsCLI = new DkmsRoboterRueckmeldungCLI();
         JCommander jc = new JCommander(dkmsCLI, args);
-        jc.setProgramName("java -jar DkmsRoboterCLI.jar");
+        jc.setProgramName("java -jar DkmsRoboterCLI-1.0-SNAPSHOT-jar-with-dependencies.jar");
         if (dkmsCLI.help) {
             jc.usage();
             return;
@@ -120,7 +120,7 @@ public class DkmsRoboterRueckmeldungCLI {
 
         RueckmeldungResponse rueckmeldungResponse =
             dkmsRoboterRueckmeldung.dkmsRoboterRueckmeldung(rueckmeldungRequest);
-        System.out.println(rueckmeldungResponse.getStatus());
+        System.out.println(rueckmeldungResponse.getStatus() + " -- " + rueckmeldungResponse.getRequestId() + " -- " + rueckmeldungResponse.getMeldung());
     }
 
     public static Material getMaterialByPosition(String position) {

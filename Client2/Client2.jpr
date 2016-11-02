@@ -262,7 +262,7 @@
          <hash n="JCommandExample">
             <value n="custom" v="false"/>
             <value n="name" v="JCommandExample"/>
-            <value n="programArguments" v="-rt=1 -r=&quot;Tecan Evo01&quot; -p=11 -u=boehm  -k=boehm -ra=Test14 -hw=&quot;Tecan Evo02 defekt&quot; -m=L00009:&quot;PCR Mastermix&quot; -m=L00011:&quot;Primer HLA-A&quot; -m=L00019:&quot;Polymerase&quot;"/>
+            <value n="programArguments" v="-rt=0 -r=TestPQ -p=21 -u=quenzel_admin -k=quenzel -ra=TestPQ001 -t=TestPQ002:Test"/>
             <url n="targetURL" path="src/de/css_lims/dkmsroboterrueckmeldung/dkms/parser/DkmsRoboterRueckmeldungCLI.java"/>
          </hash>
       </hash>
